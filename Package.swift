@@ -1,13 +1,19 @@
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
     name: "PostgreSQLProvider",
+    products: [
+        .library(name: "PostgreSQLProvider", targets: ["PostgreSQLProvider"])
+    ],
     dependencies: [
-        // PostgreSQL driver for Fluent
-        .Package(url: "https://github.com/vapor/postgresql-driver.git", majorVersion: 2),
-        // A provider for including Fluent in Vapor applications
-        .Package(url: "https://github.com/vapor/fluent-provider.git", majorVersion: 1),
-        // A web framework and server for Swift that works on macOS and Ubuntu.
-        .Package(url: "https://github.com/vapor/vapor.git", majorVersion: 2)
+        .package(url: "https://github.com/damirstuhec/postgresql-driver.git", .upToNextMajor(from: "2.0.1")),
+        .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.2.0")),
+        .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "2.2.2"))
+    ],
+    targets: [
+        .target(name: "PostgreSQLProvider", dependencies: ["PostgreSQLDriver", "FluentProvider", "Vapor"]),
+        .testTarget(name: "PostgreSQLProviderTests", dependencies: ["PostgreSQLProvider"])
     ]
 )
