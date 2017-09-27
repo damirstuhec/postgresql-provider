@@ -8,7 +8,7 @@ let package = Package(
         .library(name: "PostgreSQLProvider", targets: ["PostgreSQLProvider"])
     ],
     dependencies: [
-        .package(url: "https://github.com/damirstuhec/postgresql-driver.git", .upToNextMajor(from: "2.0.1")),
+        .package(url: "https://github.com/damirstuhec/postgresql-driver.git", .upToNextMajor(from: "2.0.3")),
         .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.2.0")),
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "2.2.2"))
     ],
